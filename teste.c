@@ -18,9 +18,19 @@ int main()
   big_val(b , val4);
   big_sum(teste3, a, b);
 
+
+  BigInt teste4;
+  BigInt c,d;
+  long val5 = 2;
+  long val6 = 3;
+  big_val(c, val5);
+  big_val(d, val6);
+  big_mul(teste4, c, d);
+
+
   for(int i = 0; i < 128/8; i++)
   {
-	printf("%02x ", teste3[i]);
+	printf("%d ", teste4[i]);
   }
   printf("\n");
   return 0;
