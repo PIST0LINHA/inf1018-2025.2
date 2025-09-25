@@ -87,3 +87,24 @@ void big_mul(BigInt res, BigInt a, BigInt b)
 	res[i] = (unsigned char)(tmp[i] & 0xFF);
   }
 }
+
+void big_shl(BigInt res, BigInt a, int n)
+{
+  unsigned char fill = 0x00;
+  for(int i = NUM_BITS/8; i > n; i--) res[i] = fill;
+  for(int i = 0; i < NUM_BITS/8 - n; i++) res[i] = a[i];
+}
+
+void big_shr(BigInt res, BigInt a, int n)
+{
+  unsigned char fill = 0x00;
+  for(int i = 0; i < n; i++) res[i] = fill;
+  for(int i = n, j = 0; i < NUM_BITS/8; i++, j++) res[i] = a[j];
+}
+
+void big_sar(BigInt res, BigInt a, int n)
+{
+  unsigned char MSB = a[0] & 0xFF;
+  for(int i = 0; i < n; i++) res[i] = MSB;
+  for(int i = n, j = 0; i < NUM_BITS/8; i++, j++) res[i] = a[j];
+}
