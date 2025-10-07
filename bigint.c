@@ -1,3 +1,6 @@
+#nome: Lucas Manoel Martisn de Souza matricula: 2320715
+#nome: Thiago Hellal Bello matricula: 2211881
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
