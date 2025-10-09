@@ -81,7 +81,7 @@ void big_mul(BigInt res, BigInt a, BigInt b)
 	  tmp[i + j] = produto & 0xFF;
 	  carry = produto >> 8;
 	}
-	tmp[i] += carry;
+	tmp[i + NUM_BITS/8] += carry;
   }
 
   //ignora overflow 
