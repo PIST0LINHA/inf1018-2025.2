@@ -17,7 +17,7 @@ void big_val(BigInt res, long val)
   for(int i = sizeof(long); i < NUM_BITS/8; i++) res[i] = fill;
 }
 
-//envia o valor de a invertido e respeitando o complemento a 2 para res
+//envia o valor de um [BigInt a] invertido e respeitando o complemento a 2 para [BigInt res]
 void big_comp2(BigInt res, BigInt a)
 {
   memcpy(res, a, NUM_BITS/8);
@@ -34,7 +34,7 @@ void big_comp2(BigInt res, BigInt a)
   }
 }
 
-//soma a com b e poe o resultado em res
+//soma [BigInt a] com [BigInt b] e escreve o resultado em [BigInt res]
 void big_sum(BigInt res, BigInt a, BigInt b)
 {
   int carry = 0;
@@ -47,7 +47,7 @@ void big_sum(BigInt res, BigInt a, BigInt b)
   }
 }
 
-//subtrai a com b e poe o resultado em res
+//subtrai [BigInt a] com [BigInt b] e poe o resultado em [BigInt res]
 void big_sub(BigInt res, BigInt a, BigInt b)
 {
   int tmp = 0;
@@ -67,17 +67,18 @@ void big_sub(BigInt res, BigInt a, BigInt b)
   }
 }
 
-//guarda em res o produto de a * b
+//guarda em [BigInt res] o produto de [BigInt a] * [BigInt b]
 void big_mul(BigInt res, BigInt a, BigInt b)
 {
   int tmp[(NUM_BITS/8) * 2];
+  memset(tmp, 0, NUM_BITS/8 * 2);
   
   for(int i = 0; i < NUM_BITS/8; i++)
   {
 	int carry = 0;
 	for(int j = 0; j < NUM_BITS/8; j++)
 	{
-	  int produto = (int)a[i] * (int)b[i] + carry;
+	  int produto = (int)a[i] * (int)b[j] + carry;
 	  tmp[i + j] = produto & 0xFF;
 	  carry = produto >> 8;
 	}
